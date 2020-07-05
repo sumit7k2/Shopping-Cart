@@ -2,45 +2,6 @@ import React from 'react';
 
 class CartItem extends React.Component{
     
-    // testing(){
-    //     const promise=new Promise((resolve,reject)=>{
-    //         setTimeout(()=>{
-    //             resolve('done');
-    //         },5000);
-    //     });
-
-    //     promise.then(()=>{
-    //         this.setState({qty:this.state.qty+10});
-    //         this.setState({qty:this.state.qty+10});
-    //         this.setState({qty:this.state.qty+10});
-    //         console.log('state',this.state);
-    //     });
-    // }
-    increaseQuantity=()=>{
-        // setState form 1
-            // this.setState({
-            //     qty:this.state.qty+1
-            // });
-        // setState form 2(if prev state is required)
-        this.setState((prevState)=>{
-            return{
-                qty:prevState.qty+1
-            }
-        });
-
-    }
-    decreaseQuantity=()=>{
-        const {qty}=this.state;
-        if(qty===0)
-        {
-            return;
-        }
-        this.setState((prevState)=>{
-            return{
-                qty:prevState.qty-1
-            }
-        });
-    }
     render(){
         console.log('this.props',this.props);
         const{price,qty,title}=this.props.product;
@@ -59,13 +20,13 @@ class CartItem extends React.Component{
                             alt="increase" 
                             className="action-icons" 
                             src="https://image.flaticon.com/icons/svg/864/864378.svg"
-                            onClick={this.increaseQuantity}
+                            onClick={()=>this.props.onIncreaseQuantity(this.props.product)}
                         />
                         <img 
                             alt="decrease" 
                             className="action-icons" 
                             src="https://image.flaticon.com/icons/svg/864/864373.svg"
-                            onClick={this.decreaseQuantity}
+                            onClick={()=>this.props.onDecreaseQuantity(this.props.product)}
                         />
                         <img 
                             alt="delete" 
