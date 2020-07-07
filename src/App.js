@@ -43,8 +43,9 @@ componentDidMount(){
   // })
   this.db
     .collection('products')
-    .where('price','==','999')
-    .where('title','==','Mug')
+    // .where('price','==','999')
+    // .where('title','==','Mug')
+    .orderBy('price','desc')
     .onSnapshot(((snapshot)=>{
       console.log(snapshot);
 
