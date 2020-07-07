@@ -43,6 +43,8 @@ componentDidMount(){
   // })
   this.db
     .collection('products')
+    .where('price','==','999')
+    .where('title','==','Mug')
     .onSnapshot(((snapshot)=>{
       console.log(snapshot);
 
